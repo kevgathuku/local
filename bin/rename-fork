@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# Get the name of the fork we need to rename
+GH_USERNAME=$(git remote | egrep -v 'origin')
+
+# Rename the original origin to upstream
+git remote rename origin upstream
+
+# Rename the fork to origin
+git remote rename $GH_USERNAME origin
+
+# Tell us whether something happened
+echo "origin remote renamed to upstream"
+echo "$GH_USERNAME remote renamed to origin"
